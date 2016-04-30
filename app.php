@@ -97,8 +97,6 @@ include 'header.php';
 
 </script>
 
-<div
-
 <div id="imgcontainer">
     <img src="img/aa.jpg" id="profileImage">
     <div class="cssload-thecube" id="loader">

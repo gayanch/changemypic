@@ -109,6 +109,33 @@ define ('ITEMS_PER_PAGE', 5);
         }
     }
 
+    function get_latest_campaigns() {
+        $db = new Db();
+        $con = $db->get_connection();
+
+        $stmt = $con->prepare("SELECT * FROM campaign ORDER BY id DESC LIMIT 3");
+        $stmt->execute();
+
+        $stmt->bind_result($id, $title, $description, $image, $owner_name, $owner_email, $expire);
+
+        $result = array();
+        while ($stmt->fetch()) {
+            $campaign = array();
+            $campaign['id'] = $id;
+            $campaign['title'] = $title;
+            $campaign['description'] = $description;
+            $campaign['image'] = $image;
+            $campaign['owner_name'] = $owner_name;
+            $campaign['owner_email'] = $owner_email;
+            $campaign['expire'] = $expire;
+
+            $result[] = $campaign;
+        }
+        $stmt->free_result();
+        $con->close();
+        return $result;
+    }
+
     function get_campaign_url($id) {
         return "http://domain.com/campaign/?id=".$id;
     }
