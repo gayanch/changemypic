@@ -1,6 +1,18 @@
 <?php
-include 'header.php';
+    include 'header.php';
+
+    session_start();
+
+    require_once 'campaign/campaign.php';
+    $campaign = new Campaign();
+
+    if (isset($_SESSION['campaign_id'])) {
+        $selected_campaign = $campaign->get_campaign_by_id($_SESSION['campaign_id']);
+    } else {
+        header('Location: /');
+    }
 ?>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <script>
     window.fbAsyncInit = function () {
@@ -96,6 +108,10 @@ include 'header.php';
     }
 
 </script>
+
+
+<h4 class="center blue-text"> <?= $selected_campaign['title'] ?> </h4>
+<h6 class="center blue-text text-lighten-1"> <?= $selected_campaign['description'] ?> </h6>
 
 <div id="imgcontainer">
     <img src="img/aa.jpg" id="profileImage">

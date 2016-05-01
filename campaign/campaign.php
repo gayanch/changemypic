@@ -113,7 +113,7 @@ define ('ITEMS_PER_PAGE', 5);
         $db = new Db();
         $con = $db->get_connection();
 
-        $stmt = $con->prepare("SELECT * FROM campaign ORDER BY id DESC LIMIT 3");
+        $stmt = $con->prepare("select * from campaign where expire > curdate() order by rand() limit 3");
         $stmt->execute();
 
         $stmt->bind_result($id, $title, $description, $image, $owner_name, $owner_email, $expire);

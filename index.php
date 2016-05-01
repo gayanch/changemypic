@@ -32,27 +32,7 @@ include 'header.php';
             <?php
                 }
             ?>
-            <!-- <div class="col-md-4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="img/aa.jpg">
-                    </div>
-                    <div class="card-action">
-                        <a href="#">Check the campaign</a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="img/aa.jpg">
-                    </div>
-                    <div class="card-action">
-                        <a href="#">Check the campaign</a>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 
