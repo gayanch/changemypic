@@ -22,7 +22,7 @@ define ('ITEMS_PER_PAGE', 5);
 
  		$result = array();
  		if ($stmt->execute()) {
- 			$stmt->bind_result($id, $title, $description, $image, $owner_name, $owner_email, $expire);
+ 			$stmt->bind_result($id, $title, $description, $image, $owner_name, $owner_email, $expire, $sample);
 
  			while ($stmt->fetch()) {
  				$result['id'] = $id;
@@ -32,6 +32,7 @@ define ('ITEMS_PER_PAGE', 5);
  				$result['owner_name'] = $owner_name;
  				$result['owner_email'] = $owner_email;
  				$result['expire'] = $expire;
+                $result['sample'] = $sample;
  			}
  			$stmt->free_result();
  			$con->close();
@@ -84,7 +85,7 @@ define ('ITEMS_PER_PAGE', 5);
                 $stmt->bind_param("ii", $page_offset, $items);
 
                 $stmt->execute();
-                $stmt->bind_result($id, $title, $description, $image, $owner_name, $owner_email, $expire);
+                $stmt->bind_result($id, $title, $description, $image, $owner_name, $owner_email, $expire, $sample);
 
                 $result = array();
                 while ($stmt->fetch()) {
@@ -96,6 +97,7 @@ define ('ITEMS_PER_PAGE', 5);
      				$campaign['owner_name'] = $owner_name;
      				$campaign['owner_email'] = $owner_email;
      				$campaign['expire'] = $expire;
+                    $campaign['sample'] = $sample;
 
                     $result[] = $campaign;
                 }
@@ -116,7 +118,7 @@ define ('ITEMS_PER_PAGE', 5);
         $stmt = $con->prepare("select * from campaign where expire > curdate() order by rand() limit 3");
         $stmt->execute();
 
-        $stmt->bind_result($id, $title, $description, $image, $owner_name, $owner_email, $expire);
+        $stmt->bind_result($id, $title, $description, $image, $owner_name, $owner_email, $expire, $sample);
 
         $result = array();
         while ($stmt->fetch()) {
@@ -128,6 +130,7 @@ define ('ITEMS_PER_PAGE', 5);
             $campaign['owner_name'] = $owner_name;
             $campaign['owner_email'] = $owner_email;
             $campaign['expire'] = $expire;
+            $campaign['sample'] = $sample;
 
             $result[] = $campaign;
         }

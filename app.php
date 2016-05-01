@@ -9,7 +9,7 @@
     if (isset($_SESSION['campaign_id'])) {
         $selected_campaign = $campaign->get_campaign_by_id($_SESSION['campaign_id']);
     } else {
-        header('Location: /');
+        header('Location: index.php');
     }
 ?>
 
@@ -114,7 +114,7 @@
 <h6 class="center blue-text text-lighten-1"> <?= $selected_campaign['description'] ?> </h6>
 
 <div id="imgcontainer">
-    <img src="img/aa.jpg" id="profileImage">
+    <img src=<?= $selected_campaign['sample'] ?> id="profileImage">
     <div class="cssload-thecube" id="loader">
         <div class="cssload-cube cssload-c1"></div>
         <div class="cssload-cube cssload-c2"></div>

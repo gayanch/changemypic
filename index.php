@@ -21,7 +21,7 @@ include 'header.php';
                         <span class="card-title"> <?= $value['title'] ?> </span>
 
                         <div class="card-image">
-                            <img src=<?=$value['image']?>>
+                            <img src=<?=$value['sample']?>>
                         </div>
                         <div class="card-action">
                             <a href="campaign?id=<?= $value['id'] ?>">Check the campaign</a>
